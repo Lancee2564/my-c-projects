@@ -13,13 +13,10 @@ int main(void) {
 
     print_menu();
 
-    while (1) {
+    // Changed from while(1) to while (choice != 4) cuz a if then a switch just looked odd
+    while (choice != 4) {
         printf("Enter your pick(the number): ");
         scanf("%d", &choice);
-
-        if (choice == 4) {
-            break;
-        }
 
         switch (choice) {
             case 1:
@@ -32,8 +29,14 @@ int main(void) {
                 break;
             case 3:
                 to_withdraw = ask_withdraw();
-                balance -= to_withdraw;
-                printf("Sucessfully withdrawn!\n");
+                // Makes sure you have enough balance to withdraw
+                if (to_withdraw > balance) {
+                    printf("Not enough money to withdraw");
+                }
+                else {
+                    balance -= to_withdraw;
+                    printf("Sucessfully withdrawn!\n");
+                }
                 break;
             default:
                 printf("Invalid input!\n");
@@ -48,19 +51,33 @@ int main(void) {
 float ask_deposit(void) {
     float deposit;
 
-    printf("Please enter how much you want to deposit: ");
-    scanf("%f", &deposit);
+    while (1) {
+        printf("Please enter how much you want to deposit: ");
+        scanf("%f", &deposit);
 
-    return deposit;
+        if (deposit > 0) {
+            return deposit;
+        }
+        else {
+            printf("Please enter a number greater than zero!\n");
+        }
+    }
 }
 
 float ask_withdraw(void) {
     float withdraw;
 
-    printf("Please enter how much you want to withdraw: ");
-    scanf("%f", &withdraw);
+    while (1) {
+        printf("Please enter how much you want to withdraw: ");
+        scanf("%f", &withdraw);
 
-    return withdraw;
+        if (withdraw > 0) {
+            return withdraw;
+        }
+        else {
+            printf("Please enter a number greater than zero!\n");
+        }
+    }
 }
 
 void print_menu(void) {
