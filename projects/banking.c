@@ -7,6 +7,8 @@ void print_menu(void);
 int main(void) {
 
     int choice = 0;
+
+    // Float cuz no need for couble precision unless you're like a bilionaire
     float balance = 0;
     float to_deposit = 0;
     float to_withdraw = 0;
@@ -20,7 +22,7 @@ int main(void) {
 
         switch (choice) {
             case 1:
-                printf("You have %f\n", balance);
+                printf("You have %.2f\n", balance); // .2 to round up
                 break;
             case 2:
                 to_deposit = ask_deposit();
@@ -31,7 +33,7 @@ int main(void) {
                 to_withdraw = ask_withdraw();
                 // Makes sure you have enough balance to withdraw
                 if (to_withdraw > balance) {
-                    printf("Not enough money to withdraw");
+                    printf("Not enough money to withdraw\n");
                 }
                 else {
                     balance -= to_withdraw;
@@ -39,7 +41,7 @@ int main(void) {
                 }
                 break;
             case 4:
-                break; // A null statement to fix 4 triggering default
+                break; // A (technically) blank statement to fix 4 triggering default
             default:
                 printf("Invalid input!\n");
                 printf("Enter a number through 1 - 4\n");
