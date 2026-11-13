@@ -8,7 +8,7 @@ int main(void) {
 
     int choice = 0;
 
-    // Float cuz no need for couble precision unless you're like a bilionaire
+    // Float cuz no need for double precision unless you're like a bilionaire
     float balance = 0;
     float to_deposit = 0;
     float to_withdraw = 0;
