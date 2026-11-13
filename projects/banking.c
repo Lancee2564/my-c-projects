@@ -38,6 +38,8 @@ int main(void) {
                     printf("Sucessfully withdrawn!\n");
                 }
                 break;
+            case 4:
+                break; // A null statement to fix 4 triggering default
             default:
                 printf("Invalid input!\n");
                 printf("Enter a number through 1 - 4\n");
